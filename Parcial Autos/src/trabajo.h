@@ -36,3 +36,7 @@ int altaTrabajo(eTrabajo trabajo[], int tamt, eAutos autos[], int tama, eColor c
 int mostrarTrabajo(eTrabajo trabajos, eServicios servicios[], int tams);
 int listarTrabajos(eTrabajo trabajos[], int tamt, eServicios servicios[], int tams);
 
+int trabajosDeAuto(eTrabajo trabajo[], int tamt, eAutos autos[], int tama, eColor colores[], int tamc, eMarcas marcas[], int tamm, eServicios servicio[], int tams);
+int servicioPorAuto(eTrabajo trabajo[], int tamt,eServicios servicio[], int tams);
+int servicioPorFecha(eTrabajo trabajo[], int tamt,eServicios servicio[], int tams);
+int costoDeAuto(eTrabajo trabajo[], int tamt, eAutos autos[], int tama, eColor colores[], int tamc, eMarcas marcas[], int tamm, eServicios servicio[], int tams);

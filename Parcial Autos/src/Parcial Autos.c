@@ -99,6 +99,10 @@ int main(void)
 			if(flagCargaA == 1)
 			{
 				bajaAuto(autos, TAM, colores, TAMC, marcas, TAMM);
+				if(buscarAutoCargado(autos, TAM) == 0)
+				{
+					flagCargaA = 0;
+				}
 			}
 			else
 			{
@@ -147,6 +151,107 @@ int main(void)
 			}
 		break;
 		case 'J':
+			if(flagCargaA == 1)
+			{
+				mostrarAutosPorColor(autos, TAM, colores, TAMC, marcas, TAMM);
+			}
+			else
+			{
+				printf("Debe cargar un auto primero\n");
+			}
+		break;
+		case 'K':
+			if(flagCargaA == 1)
+			{
+				mostrarAutosPorMarca(autos, TAM, colores, TAMC, marcas, TAMM);
+			}
+			else
+			{
+				printf("Debe cargar un auto primero\n");
+			}
+		break;
+		case 'L':
+			if(flagCargaA == 1)
+			{
+				procentajeCajaMyCajaA(autos, TAM);
+			}
+			else
+			{
+				printf("Debe cargar un auto primero\n");
+			}
+		break;
+		case 'M':
+			if(flagCargaA == 1)
+			{
+				ordenarPorCaja(autos, TAM);
+				listarAuto(autos, TAM, colores, TAMC, marcas, TAMM);
+			}
+			else
+			{
+				printf("Debe cargar un auto primero\n");
+			}
+		break;
+		case 'N':
+			if(flagCargaA == 1)
+			{
+				marcaYcolor(autos, TAM, colores, TAMC, marcas, TAMM);
+			}
+			else
+			{
+				printf("Debe cargar un auto primero\n");
+			}
+		break;
+		case 'O':
+			if(flagCargaA == 1)
+			{
+				marcasMasElegidas(autos, TAMC, marcas, TAMM);
+			}
+			else
+			{
+				printf("Debe cargar un auto primero\n");
+			}
+		break;
+		case 'P':
+			if(flagCargaT == 1)
+			{
+				trabajosDeAuto(trabajo, TAMT, autos, TAM, colores, TAMC, marcas, TAMM, servicios, TAMS);
+			}
+			else
+			{
+				printf("Debe cargar un trabajo antes\n");
+			}
+		break;
+		case 'Q':
+			if(flagCargaT == 1)
+			{
+				costoDeAuto(trabajo, TAMT, autos, TAM, colores, TAMC, marcas, TAMM, servicios, TAMS);
+			}
+			else
+			{
+				printf("Debe cargar un trabajo antes\n");
+			}
+		break;
+		case 'R':
+			if(flagCargaT == 1)
+			{
+				servicioPorAuto(trabajo, TAMT, servicios, TAMS);
+			}
+			else
+			{
+				printf("Debe cargar un trabajo antes\n");
+			}
+		break;
+		case 'S':
+			if(flagCargaT == 1)
+			{
+				servicioPorFecha(trabajo, TAMT, servicios, TAMS);
+			}
+			else
+			{
+						printf("Debe cargar un trabajo antes\n");
+			}
+		break;
+		case 'T':
 			confirmarSalida(&salir);
 		break;
 		default:

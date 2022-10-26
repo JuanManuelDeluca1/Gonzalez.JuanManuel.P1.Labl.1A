@@ -163,7 +163,7 @@ int listarTrabajos(eTrabajo trabajos[], int tamt, eServicios servicios[], int ta
             if(trabajos[i].isEmpty == 0)
             {
             	mostrarTrabajo(trabajos[i],  servicios, tams);
-                flag = 1;
+            	flag = 1;
             }
         }
         if(flag == 0)
@@ -177,4 +177,166 @@ int listarTrabajos(eTrabajo trabajos[], int tamt, eServicios servicios[], int ta
     return todoOk;
 }
 
+int trabajosDeAuto(eTrabajo trabajo[], int tamt, eAutos autos[], int tama, eColor colores[], int tamc, eMarcas marcas[], int tamm, eServicios servicio[], int tams)
+{
+	int todoOk = 0;
+	int id;
+	int flag = 0;
+	if(trabajo != NULL && tamt > 0 && autos != NULL && tama > 0)
+	{
+		listarAuto(autos, tama, colores, tamc, marcas, tamm);
+		printf("Ingrese el id del auto: ");
+		fflush(stdin);
+		scanf("%d", &id);
+		while(buscarAutoXId(autos, tama, id)< 0)
+		{
+			listarAuto(autos, tama, colores, tamc, marcas, tamm);
+		    printf("El id es invalido reingrese el id: ");
+			fflush(stdin);
+			scanf("%d", &id);
+		}
+		 system("cls");
+		 printf("          *** Listado de Trabajos ***\n\n");
+		 printf(" id      IdAuto      Servicio    F.Ingreso\n");
+		 printf("--------------------------------------------------------------------------------\n");
+		for(int i=0;i<tamt;i++)
+		{
+			if(buscarAutoXId(autos, tama, id)< 0)
+			{
+				mostrarTrabajo(trabajo[i], servicio, tams);
+				flag = 1;
+			}
+		}
+		todoOk = 1;
+	}
+	if(flag == 0)
+	{
+		printf("Ese auto no se hizo ningun servicio\n");
+	}
+	return todoOk;
+}
 
+int costoDeAuto(eTrabajo trabajo[], int tamt, eAutos autos[], int tama, eColor colores[], int tamc, eMarcas marcas[], int tamm, eServicios servicio[], int tams)
+{
+	int todoOk = 0;
+	int id;
+	float total = 0;
+	float precio;
+	int flag = 0;
+	if(trabajo != NULL && tamt > 0 && autos != NULL && tama > 0)
+	{
+		listarAuto(autos, tama, colores, tamc, marcas, tamm);
+		printf("Ingrese el id del auto: ");
+		fflush(stdin);
+		scanf("%d", &id);
+		while(buscarAutoXId(autos, tama, id)< 0)
+		{
+			listarAuto(autos, tama, colores, tamc, marcas, tamm);
+		    printf("El id es invalido reingrese el id: ");
+			fflush(stdin);
+			scanf("%d", &id);
+		}
+		system("cls");
+		printf("          *** Listado de Trabajos ***\n\n");
+		printf(" id      IdAuto      Servicio    F.Ingreso\n");
+		printf("--------------------------------------------------------------------------------\n");
+		for(int i=0;i<tamt;i++)
+		{
+			if(buscarAutoXId(autos, tama, id)< 0)
+			{
+				if(ingresarServicioPrecio(servicio, tamt, trabajo[i].idServicio , &precio) == 1)
+				{
+					total += precio;
+					flag = 1;
+				}
+
+			}
+		}
+		todoOk = 1;
+	}
+	if(flag == 0)
+	{
+		printf("Ese auto no se hizo ningun servicio\n");
+	}
+	else
+	{
+		printf("El total de su auto %d hasta hora es: %.2f\n", id, total);
+	}
+	return todoOk;
+}
+
+int servicioPorAuto(eTrabajo trabajo[], int tamt,eServicios servicio[], int tams)
+{
+	int todoOk = 0;
+	int idServicio;
+	int flag = 0;
+	if(trabajo != NULL && tamt > 0 && servicio != NULL && tams > 0)
+	{
+		listarServicio(servicio, tams);
+
+	    printf("Ingrese el id del servicio que quiera hacerle a su auto: ");
+		fflush(stdin);
+		scanf("%d", &idServicio);
+
+		while(idServicio < 20000 || idServicio > 20003)
+		{
+			listarServicio(servicio, tams);
+			printf("Reingrese id del servicio: ");
+			fflush(stdin);
+			scanf("%d", &idServicio);
+		}
+		system("cls");
+		printf("          *** Listado de Trabajos ***\n\n");
+		printf(" id          idAuto        Servicio    F.Ingreso\n");
+		printf("--------------------------------------------------------------------------------\n");
+		for(int i=0;i<tamt;i++)
+		{
+			if(idServicio == trabajo[i].idServicio)
+			{
+				mostrarTrabajo(trabajo[i], servicio, tams);
+				flag = 1;
+			}
+		}
+		todoOk = 1;
+	}
+	if(flag == 0)
+	{
+		printf("Ese auto no se hizo ningun servicio\n");
+	}
+	return todoOk;
+}
+
+int servicioPorFecha(eTrabajo trabajo[], int tamt,eServicios servicio[], int tams)
+{
+	int todoOk = 0;
+	eFecha fecha;
+	int flag = 0;
+	if(trabajo != NULL && tamt > 0 && servicio != NULL && tams > 0)
+	{
+		printf("Ingrese Fecha ingreso dd/mm/aaaa: \n");
+		scanf("%d/%d/%d", &fecha.dia, &fecha.mes, &fecha.anio);
+		while(validarFecha(fecha, fecha.dia, fecha.mes, fecha.anio) == 0)
+		{
+			printf("Reingrese Fecha ingreso dd/mm/aaaa: \n");
+			scanf("%d/%d/%d", &fecha.dia, &fecha.mes, &fecha.anio);
+		}
+		system("cls");
+		printf("          *** Listado de Trabajos ***\n\n");
+		printf("  id      IdAuto      Servicio    F.Ingreso\n");
+		printf("--------------------------------------------------------------------------------\n");
+		for(int i=0;i<tamt;i++)
+		{
+			if(fecha.dia == trabajo[i].fecha.dia && fecha.mes == trabajo[i].fecha.mes && fecha.anio == trabajo[i].fecha.anio)
+			{
+				mostrarTrabajo(trabajo[i], servicio, tams);
+				flag = 1;
+			}
+		}
+		todoOk = 1;
+	}
+	if(flag == 0)
+	{
+		printf("En esa fecha no se realizo ningun cambio\n");
+	}
+	return todoOk;
+}

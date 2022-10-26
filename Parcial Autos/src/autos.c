@@ -81,6 +81,25 @@ int buscarAutoXId(eAutos x[], int tam, int id)
 	return todoOk;
 }
 
+int buscarAutoCargado(eAutos vec[], int tam)
+{
+	int todoOk = -1;
+	if(vec != NULL && tam > 0)
+	{
+		todoOk = 0;
+		for(int i=0;i<tam;i++)
+		{
+			if(vec[i].isEmpty == 0)
+			{
+				todoOk = 1;
+				break;
+			}
+		}
+	}
+	return todoOk;
+}
+
+
 int altaAuto(eAutos autos[], int tama, eColor color[], int tamc, eMarcas marca[], int tamm, int* pId)
 {
 	int todoOk = 0;
@@ -326,4 +345,262 @@ int ordenarAutosXMarcaYTipoCaja(eAutos vec[], int tama, eColor color[], int tamc
         todoOk = 1;
     }
     return todoOk;
+}
+
+int mostrarAutosPorColor(eAutos autos[], int tama, eColor colores[], int tamc, eMarcas marca[], int tamm)
+{
+	int todoOk = 0;
+	int id;
+	int flag = 0;
+	if(autos != NULL && tama > 0 && colores != NULL && tamc > 0)
+	{
+		listarColor(colores, tamc);
+		printf("ingrese id del color que quier ver los autos: ");
+		fflush(stdin);
+		scanf("%d", &id);
+		while(id < 5000 && id > 5004)
+		{
+			printf("Reingrese el id del color: ");
+			fflush(stdin);
+			scanf("%d", &id);
+		}
+		printf("          *** Listado de Autos ***\n\n");
+		printf("id    Marca    Color   Caja\n");
+		printf("-----------------------------------------------------\n");
+		for(int i=0;i<tama;i++)
+		{
+			if(autos[i].idColor == id)
+			{
+				mostrarAuto(autos[i], marca, tamm, colores, tamc);
+				flag = 1;
+			}
+		}
+	}
+	if(flag == 0)
+	{
+		printf("No hay autos con ese color\n");
+	}
+	return todoOk;
+}
+
+int mostrarAutosPorMarca(eAutos autos[], int tama, eColor colores[], int tamc, eMarcas marca[], int tamm)
+{
+	int todoOk = 0;
+	int id;
+	int flag = 0;
+	if(autos != NULL && tama > 0 && colores != NULL && tamc > 0)
+	{
+		listarMarcas(marca, tamm);
+		printf("ingrese id de la marca que quier ver los autos: ");
+		fflush(stdin);
+		scanf("%d", &id);
+		while(id < 1000 && id > 1004)
+		{
+			printf("Reingrese el id de la marca: ");
+			fflush(stdin);
+			scanf("%d", &id);
+		}
+		printf("          *** Listado de Autos ***\n\n");
+		printf("id    Marca    Color   Caja\n");
+		printf("-----------------------------------------------------\n");
+		for(int i=0;i<tama;i++)
+		{
+			if(autos[i].idMarca == id)
+			{
+				mostrarAuto(autos[i], marca, tamm, colores, tamc);
+				flag = 1;
+			}
+		}
+	}
+	if(flag == 0)
+	{
+		printf("No hay autos con ese Marca\n");
+	}
+	return todoOk;
+}
+
+int procentajeCajaMyCajaA(eAutos autos[], int tam)
+{
+	int todoOk = 0;
+	int contadortotal = 0;
+	int contadorManual = 0;
+	int contadorAuto = 0;
+	float promAuto;
+	float promManual;
+	if(autos != NULL && tam > 0)
+	{
+		for(int i=0;i<tam;i++)
+		{
+			if(autos[i].isEmpty == 0)
+			{
+				contadortotal++;
+				if(autos[i].caja == 'm')
+				{
+					contadorManual++;
+				}
+				if(autos[i].caja == 'a')
+				{
+					contadorAuto++;
+				}
+			}
+		}
+		promAuto = (float) contadorManual / contadortotal * 100;
+		promManual = (float) contadorAuto / contadortotal * 100;
+		if(contadorManual > 0)
+		{
+			printf("El promedio de autos con caja manual es: %.2f\n" , promManual);
+		}
+		else
+		{
+			printf("Todos los autos son automaticos\n");
+		}
+		if(contadorAuto > 0)
+		{
+			printf("El promedio de autos con caja automatica es: %.2f\n", promAuto);
+		}
+		else
+		{
+			printf("Todos los autos son manual\n");
+		}
+	}
+	return todoOk;
+}
+
+int ordenarPorCaja(eAutos autos[], int tama)
+{
+	int todoOk = 0;
+	char cajaAux;
+	if(autos != NULL && tama > 0)
+	{
+		for(int i=0;i<tama-1;i++)
+		{
+			for(int j= i + 1;j<tama;j++)
+			{
+				if(autos[j].caja == 'a')
+				{
+					cajaAux = autos[j].caja;
+					autos[j].caja = autos[i].caja;
+					autos[i].caja = cajaAux;
+				}
+			}
+		}
+		todoOk =1;
+	}
+	return todoOk;
+}
+
+int marcaYcolor(eAutos autos[], int tama, eColor colores[], int tamc, eMarcas marcas[], int tamm)
+{
+	int todoOk = 0;
+	int idColor;
+	int idMarca;
+	int flag = 0;
+	if(autos != NULL && tama > 0 && colores != NULL && tamc > 0 && marcas != NULL && tamm > 0)
+	{
+		listarMarcas(marcas, tamm);
+		printf("ingrese id de la marca que quier ver los autos: ");
+		fflush(stdin);
+		scanf("%d", &idMarca);
+		while(idMarca < 1000 && idMarca > 1004)
+		{
+			printf("Reingrese el id de la marca: ");
+			fflush(stdin);
+			scanf("%d", &idMarca);
+		}
+		listarColor(colores, tamc);
+		printf("ingrese id del color que quier ver los autos: ");
+		fflush(stdin);
+		scanf("%d", &idColor);
+		while(idColor < 5000 && idColor > 5004)
+		{
+			printf("Reingrese el id del color: ");
+			fflush(stdin);
+			scanf("%d", &idColor);
+		}
+		for(int i=0;i < tama; i++)
+		{
+			if(autos[i].idMarca == idMarca && autos[i].idColor == idColor)
+			{
+				mostrarAuto(autos[i], marcas, tamm, colores, tamc);
+				flag = 1;
+			}
+		}
+		todoOk = 1;
+	}
+	if(flag == 0)
+	{
+		printf("No se encontro autos de esa marca y ese color\n");
+	}
+	return todoOk;
+}
+
+int marcasMasElegidas(eAutos autos[], int tama, eMarcas marcas[], int tamm)
+{
+	int todoOk = 0;
+	int idmarcaMasElegida;
+	int marcaMasElegida;
+	int ford = 0;
+	int renault = 0;
+	int chevrolet = 0;
+	int fiat = 0;
+	int peugeot = 0;
+	char desMarca[20];
+	if(autos != NULL && tama > 0 && marcas != NULL && tamm > 0)
+	{
+		for(int i=0;i<tama;i++)
+		{
+			if(autos[i].idMarca == 1000)
+			{
+				renault++;
+			}
+			if(autos[i].idMarca == 1001)
+			{
+				ford++;
+			}
+			if(autos[i].idMarca == 1002)
+			{
+				fiat++;
+			}
+			if(autos[i].idMarca == 1003)
+			{
+				chevrolet++;
+			}
+			if(autos[i].idMarca == 1004)
+			{
+				peugeot++;
+			}
+		}
+		if(renault > ford && renault > fiat && renault > chevrolet && renault > peugeot)
+		{
+			marcaMasElegida = renault;
+			idmarcaMasElegida = 1000;
+		}
+		else if(ford > fiat && ford > chevrolet && ford > peugeot)
+		{
+			marcaMasElegida = ford;
+			idmarcaMasElegida = 1001;
+		}
+		else if(fiat > ford && fiat > chevrolet && fiat > peugeot)
+		{
+			marcaMasElegida = fiat;
+		    idmarcaMasElegida = 1002;
+		}
+		else if(chevrolet > peugeot)
+		{
+			marcaMasElegida = chevrolet;
+			idmarcaMasElegida = 1003;
+		}
+		else
+		{
+			marcaMasElegida = peugeot;
+			idmarcaMasElegida = 1004;
+		}
+		todoOk =1;
+	}
+	if(ingresarMarcas(marcas, tamm, idmarcaMasElegida, desMarca) == 1)
+	{
+		printf("La marca mas elegia es: %s con %d\n", desMarca, marcaMasElegida);
+	}
+
+	return todoOk;
 }

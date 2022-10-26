@@ -20,9 +20,19 @@ int menu()
 	printf("G) Listar Servicio\n");
 	printf("H) Alta Trabajo\n");
 	printf("I) Listar Trabajo\n");
-	printf("J) Salir\n");
+	printf("J) Listar autos por color\n");
+	printf("K) Lisrar autos por marca\n");
+	printf("L) Informe auto mas viejo\n");
+	printf("M) Listar autos por orden de caja\n");
+	printf("N) Elegir color y marca y mostrar esos autos\n");
+	printf("O) Marcas mas elegida por los clientes\n");
+	printf("P) Trabajos de un auto\n");
+	printf("Q) Suma total de un auto\n");
+	printf("R) Servicio por auto\n");
+	printf("S) Servicios realizados en una fecha\n");
+	printf("T) Salir\n");
 	printf("Ingrese una opcion: \n");
-	scanf("%c", &opcion);
+	scanf("%s", &opcion);
 
 	return opcion;
 }
