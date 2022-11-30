@@ -1,0 +1,52 @@
+
+Id|Pelicula|Genero|Duracion
+18,Headhunters,Action,237
+27,Powerpuff Girls,Action,145
+28,Brotherhood of Death,Action,207
+44,Gabriel,Action,113
+1,Adventures of Rocky,Adventure,100
+15,Antarctica,Adventure,233
+40,Invincible Iron Man,Animation,117
+14,Open Season,Animation,145
+7,Mannequin,Comedy,127
+22,Lobo,Comedy,191
+23,Only Old Men,Comedy,160
+24,Killing Bonos,Comedy,170
+26,Waiting,Comedy,150
+9,Fools Parade,Comedy,109
+4,Monster in a Box,Comedy,151
+29,Music Within,Comedy,121
+5,Lovely Amazing,Comedy,200
+41,Professor Beware,Comedy,178
+43,Strike Up the Band,Comedy,119
+17,Wild Tales,Comedy,159
+46,The Man Who Shook,Comedy,170
+47,Boy Meets Girls,Comedy,109
+48,True Confession,Comedy,151
+31,One Shot,Documentary,195
+8,Rouva presidentti,Documentary,206
+3,Criminal,Drama,119
+33,Twilight of a Woman,Drama,202
+34,Little Girl,Drama,230
+35,G Men,Drama,200
+36,Camp,Drama,239
+37,Finding Forrester,Drama,109
+38,The End of the Tour,Drama,100
+2,My Brother the Devil,Drama,184
+16,Love in the Afternoon,Drama,158
+42,Beans of Egypt,Drama,104
+11,Longtime Companion,Drama,222
+13,Werckmeister Harmonies,Drama,224
+19,Moby Dick,Drama,230
+20,Doors,Drama,219
+30,Bedford Incident,Drama,200
+50,Short Film About Love,Drama,223
+32,Troll,Horror,131
+21,Dont Look in the Basement,Horror,121
+10,Hitcherr,Horror,101
+45,Killjoy 3,Horror,150
+25,My Friend Irma Goes,Musical,234
+12,San Francisco,Musical,227
+6,Sleeping Dictionary,Romance,228
+39,Night Court,Thriller,146
+49,Violent Men,Western,128
